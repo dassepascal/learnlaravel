@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('first-name');
             $table->string('last-name');
-            $table->longText('payload');
+         
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
