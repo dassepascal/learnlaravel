@@ -1,23 +1,16 @@
 <x-layout>
     <x-slot:heading>
-       Job listings
+        Job listings
     </x-slot:heading>
-<ul>
-    @if(is_iterable($jobs))
-    @foreach ($jobs as $job)
-    
-        <li> 
-            <a href="/jobs/{{ $job['id'] }}" class="text-blue-500 hover:undeline">
-                <strong>{{ $job['title'] }}</strong> : Pays {{ $job['salary'] }} per year.</li>
-            </a>
-          
-    
-    @endforeach
-    @else
-        <p>No jobs found</p>
-    @endif
-  
-</ul>
+    <div class="space-y-6">
+        @foreach ($jobs as $job)
+            <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+                <div class="font-bold text-blue-500">{{ $job->employer->name }}</div>
+              <div class="">
+                <strong>{{ $job['title'] }}</strong> : Pays {{ $job['salary'] }} per year.
+              </div>
 
-    
+            </a>
+        @endforeach
+    </div>
 </x-layout>
