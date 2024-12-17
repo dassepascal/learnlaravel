@@ -23,6 +23,11 @@ class JobController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'title' => ['required', 'min:3'],
+            'salary' => ['required']
+        ]);
+
         Job::create([
             'title' => request('title'),
             'salary' => request('salary'),
@@ -31,6 +36,7 @@ class JobController extends Controller
 
         return redirect('/jobs');
     }
+
 
     public function show(Job $job)
     {
