@@ -1,1 +1,6 @@
 Model-View-Controller = MVC
+
+
+
+
+php artisan route:list --except-vendor
