@@ -11,8 +11,17 @@ class SessionController extends Controller
         return view('auth.login');
         
     }
-public function store(){
+    public function store()
+    {
+        $attributes = request()->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
 
-   
-}
+        if (!auth()->guard()->attempt($attributes)) {
+            return back()->withInput()->withErrors(['email' => 'The provided credentials do not match our records.']);
+        }
+
+        return redirect('/')->with('success', 'Welcome back!');
+    }
 }
